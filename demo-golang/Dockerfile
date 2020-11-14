@@ -1,7 +1,7 @@
 FROM golang:1.15 as builder
 
 # Copy local code to the container image.
-WORKDIR /go/src/github.com/linzhaoming/tekton-demo
+WORKDIR /go/src/github.com/linzhaoming/tekton-demo/demo-golang
 COPY . .
 
 # Build the command inside the container.
@@ -15,7 +15,7 @@ FROM alpine
 RUN apk add --no-cache ca-certificates
 
 # Copy the binary to the production image from the builder stage.
-COPY --from=builder /go/src/github.com/linzhaoming/tekton-demo/demo /demo
+COPY --from=builder /go/src/github.com/linzhaoming/tekton-demo/demo-golang/demo /demo
 
 # Run the web service on container startup.
 CMD ["/demo"]
