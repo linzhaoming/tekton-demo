@@ -1,0 +1,8 @@
+server:
+  port: 18080
+TARGET: linzm
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
